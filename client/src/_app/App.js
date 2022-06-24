@@ -1,10 +1,10 @@
-import '../_styles/_global.css';
+import React from 'react'
+import Index from '../routes/Index'
 
 function App() {
+
   return (
-    <div className="App">
-      Home
-    </div>
+    <Index/>
   );
 }
 
