@@ -3,7 +3,7 @@ import '../_styles/_global.css';
 function App() {
   return (
     <div className="App">
-      home
+      Home
     </div>
   );
 }
