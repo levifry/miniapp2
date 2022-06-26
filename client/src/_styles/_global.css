@@ -37,7 +37,7 @@
   color: #5a5871;
   font-size: var(--font-size-title);
   text-transform: uppercase;
-  margin-top: 0;
+  margin-top: -4rem;
   margin-bottom: 1rem;
 }
 
@@ -45,7 +45,7 @@
   color: #93a0a6;
   font-size: var(--font-size-title);
   text-transform: uppercase;
-  margin-top: 0;
+  margin-top: -4rem;
   margin-bottom: 1rem;
 }
 
@@ -133,8 +133,8 @@ button {
 }
 
 .cell {
-  height: 9vw;
-  width: 9vw;
+  height: 10vw;
+  width: 10vw;
   max-height: 68px;
   max-width: 68px;
   font-weight: 800;

@@ -2,11 +2,6 @@ import React, { useContext } from 'react'
 import useSound from 'use-sound';
 import { GlobalContext } from '../_context/AppProvider'
 import useLongPress from '../_helpers/useLongPress';
-// import bombSfx from '../_assets/sounds/kill.wav';
-// import flagSfx from '../_assets/sounds/hover.wav';
-// import bomb from '../_assets/img/impostor.png'
-// import flag from '../_assets/img/flag.png'
-// import ventImg from '../_assets/img/vent.png'
 import { Img } from '../_styles/_global'
 
 export default function Cell({details, updateFlag, revealcell}) {
@@ -21,14 +16,14 @@ export default function Cell({details, updateFlag, revealcell}) {
 
   // Playing Sound on differents Clicks
   const click = () => {
-    if (details.value === 'X' && !details.revealed) {
+    if (details.value === 'X' && !details.revealed && !details.flagged) {
       playBomb();
       // console.log(details)
-    } else if (details.revealed === false) {
+    } else if (details.revealed === false && !details.flagged) {
       vent()
     }
 
-    if (!details.revealed) {
+    if (!details.revealed && !details.flagged) {
       // Calling revealcell for specific cell x and y
       revealcell(details.x, details.y)
     }
@@ -56,7 +51,7 @@ export default function Cell({details, updateFlag, revealcell}) {
 
   const defaultOptions = {
     shouldPreventDefault: true,
-    delay: 400,
+    delay: 300,
   };
 
   const longPress = useLongPress(onLongPress, onClick, defaultOptions)

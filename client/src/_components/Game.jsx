@@ -28,8 +28,8 @@ function Game() {
 
   // Making freshboard at start
   const freshBoard = () => {
-    const newBoard = createBoard(10, 10, 20);
-    setNonMinecount(10 * 10 - 20);
+    const newBoard = createBoard(11, 8, 14);
+    setNonMinecount(11 * 8 - 14);
     setmineLocation(newBoard.mineLocation);
     setGrid(newBoard.board);
   }
@@ -56,20 +56,22 @@ function Game() {
     setFinished(false)
   }
 
-  const revealcell = (x,y) => {
+  const revealcell = (x, y) => {
     let newGrid=JSON.parse(JSON.stringify(grid));
     if (newGrid[x][y].value === "X"){
-			for (let i=0; i<mineLocation.length; i++) {
+			for (let i=0; i < mineLocation.length; i++) {
         newGrid[mineLocation[i][0]][mineLocation[i][1]].revealed=true;
       }
       setGrid(newGrid);
       setTimeout(newfresh, 2500);
     }
-    // if (nonMinecount === 0){
-    //   toast.success('Congrats, you found all of the impostors!', { position: "bottom-center", autoClose: 8000, hideProgressBar: true, closeOnClick: true, pauseOnHover: true, draggable: true, progress: undefined });
-    //   setTimeout(newfresh, 10000);
-    // }
     else{
+      if (nonMinecount <= 1 && !finished){
+        setFinished(true)
+        toast.success('Congrats, you found all of the impostors!', { position: "bottom-center", autoClose: 4000, hideProgressBar: true, closeOnClick: true, pauseOnHover: false, draggable: true, progress: undefined });
+        playWin()
+        setTimeout(newfresh, 6000);
+      }
       let revealedboard = revealed(newGrid, x, y, nonMinecount);
       setGrid(revealedboard.arr);
       setNonMinecount(revealedboard.newNonMines);
