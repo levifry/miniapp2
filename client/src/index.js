@@ -9,7 +9,7 @@ import './_styles/_global.css'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <AppProvider>
-    <Router basename={process.env.PUBLIC_URL} fallback={<NotFound />} exceptionElement={<NotFound />}>
+    <Router fallback={<NotFound />} exceptionElement={<NotFound />}>
 			<App />
     </Router>
   </AppProvider>
