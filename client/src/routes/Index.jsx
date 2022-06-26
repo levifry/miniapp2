@@ -34,7 +34,7 @@ const Page = () => {
 
   return (
     <Div id='page' onMouseDown={playIt} className={theme} flex column fills center centertext>
-      <Div flex column stretch center centertext>
+      <Div flex column centerchildren centertext>
         <h1>Ventsweeper</h1>
         <Game />
         <Suspense><ThemeSwitch /></Suspense>

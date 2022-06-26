@@ -19,8 +19,8 @@ export const Div = styled.div`
 export const Fix = styled.div`
   display: block;
   position: fixed;
-  right: 2rem;
-  bottom: 2rem;
+  right: 1rem;
+  bottom: 1rem;
 `;
 
 export const Img = styled.img`
