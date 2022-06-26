@@ -35,7 +35,7 @@
 
 .dark h1 {
   color: #5a5871;
-  font-size: var(--font-size-huge);
+  font-size: var(--font-size-title);
   text-transform: uppercase;
   margin-top: 0;
   margin-bottom: 1rem;
@@ -43,7 +43,7 @@
 
 .lite h1 {
   color: #93a0a6;
-  font-size: var(--font-size-huge);
+  font-size: var(--font-size-title);
   text-transform: uppercase;
   margin-top: 0;
   margin-bottom: 1rem;
@@ -125,10 +125,12 @@ button {
   padding: 1.25rem;
 }
 
-/* .cell img {
+.cell img {
   height: auto;
-  width: 23h;
-} */
+  width: 3vw;
+  min-width: 24px;
+  max-width: 44px;
+}
 
 .cell {
   height: 9vw;
@@ -139,7 +141,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   /* padding: 1rem; */
   margin: 2px;
   border: 0px solid white;
