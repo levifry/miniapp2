@@ -36,17 +36,17 @@
 .dark h1 {
   color: #5a5871;
   font-size: var(--font-size-huge);
-  position: fixed;
-  top: 4rem;
   text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
 .lite h1 {
   color: #93a0a6;
   font-size: var(--font-size-huge);
-  position: fixed;
-  top: 4rem;
   text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
 
@@ -122,18 +122,25 @@ button {
 .board {
   font-family: 'Poppins', sans-serif;
   font-size: var(--font-size-body-large) !important;
-  padding: 2rem;
+  padding: 1.25rem;
 }
 
+/* .cell img {
+  height: auto;
+  width: 23h;
+} */
+
 .cell {
-  height: 40px;
-  width: 40px;
-  font-weight: 1000;
+  height: 9vw;
+  width: 9vw;
+  max-height: 68px;
+  max-width: 68px;
+  font-weight: 800;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1rem;
-  padding: 1rem;
+  font-size: 1.25rem;
+  /* padding: 1rem; */
   margin: 2px;
   border: 0px solid white;
   /* box-shadow: 0 0 18px 0 blue; */
@@ -194,3 +201,28 @@ button {
   background-color: #ffe596 !important;
 }
 
+.dark .Toastify__toast-theme--light {
+  width: 420px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: #19182c;
+}
+
+.dark .Toastify__toast-theme--light svg {
+  fill: #bab6ff;
+}
+
+.lite .Toastify__toast-theme--light {
+  width: 420px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #444c57;
+  background-color: #f7f7f7;
+}
+
+.lite .Toastify__toast-theme--light svg {
+  fill: #7cb3ff;
+}

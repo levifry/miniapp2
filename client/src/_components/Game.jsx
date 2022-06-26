@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { createBoard, revealed } from '../_helpers/gameUtils'
 import Cell from './Cell';
-import { toast,ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useSound from 'use-sound';
 
 function Game() {
 
   const [grid, setGrid] = useState([])
   const [nonMinecount, setNonMinecount] = useState(0)
   const [mineLocation, setmineLocation] = useState([])
+  const [finished, setFinished] = useState(false)
+
+  const [playWin] = useSound('/assets/sounds/win.mp3', {volume: 0.14, interrupt: false});
+
 
   const style={
     display : 'flex',
@@ -21,7 +26,7 @@ function Game() {
     freshBoard();
   }, []);
 
-  // Making freshboard atstart
+  // Making freshboard at start
   const freshBoard = () => {
     const newBoard = createBoard(10, 10, 20);
     setNonMinecount(10 * 10 - 20);
@@ -35,6 +40,12 @@ function Game() {
     if (flagged) {
       newGrid[x][y].flagged = false;
     } else {
+      if (nonMinecount === 0 && !finished){
+        setFinished(true)
+        toast.success('Congrats, you found all of the impostors!', { position: "bottom-center", autoClose: 4000, hideProgressBar: true, closeOnClick: true, pauseOnHover: false, draggable: true, progress: undefined });
+        playWin()
+        setTimeout(newfresh, 6000);
+      }
       newGrid[x][y].flagged = true;
     }
     setGrid(newGrid);
@@ -42,6 +53,7 @@ function Game() {
 
   const newfresh = () => {
     freshBoard();
+    setFinished(false)
   }
 
   const revealcell = (x,y) => {
@@ -53,10 +65,10 @@ function Game() {
       setGrid(newGrid);
       setTimeout(newfresh, 2500);
     }
-    if (nonMinecount === 0){
-      toast.success('Congrats, you found all of the impostors!', { position: "top-center", autoClose: 1000, hideProgressBar: true, closeOnClick: true, pauseOnHover: true, draggable: true, progress: undefined, });
-      setTimeout(newfresh, 10000);
-    }
+    // if (nonMinecount === 0){
+    //   toast.success('Congrats, you found all of the impostors!', { position: "bottom-center", autoClose: 8000, hideProgressBar: true, closeOnClick: true, pauseOnHover: true, draggable: true, progress: undefined });
+    //   setTimeout(newfresh, 10000);
+    // }
     else{
       let revealedboard = revealed(newGrid, x, y, nonMinecount);
       setGrid(revealedboard.arr);

@@ -15,8 +15,9 @@ export default function Cell({details, updateFlag, revealcell}) {
   const { theme, vent } = store
 
   // Adding three sounds
-  const [playBomb] = useSound('/assets/sounds/kill.wav', {volume: 0.18, interrupt: false});
+  const [playBomb] = useSound('/assets/sounds/kill.wav', {volume: 0.14, interrupt: false});
   const [playFlag] = useSound('/assets/sounds/hover.wav', {volume: 0.3, interrupt: false});
+  const [playdeFlag] = useSound('/assets/sounds/deflag.wav', {volume: 0.26, interrupt: false});
 
   // Playing Sound on differents Clicks
   const click = () => {
@@ -38,7 +39,7 @@ export default function Cell({details, updateFlag, revealcell}) {
     if (details.flagged && !details.revealed) {
       // console.log(details)
       updateFlag(e,details.x, details.y, true)
-      playFlag();
+      playdeFlag();
     } else if (!details.revealed) {
       updateFlag(e,details.x, details.y, false)
       playFlag();
