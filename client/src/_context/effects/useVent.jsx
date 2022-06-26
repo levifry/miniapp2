@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import useSound from 'use-sound';
-import vent1 from '../../_assets/sounds/vent1.wav';
-import vent2 from '../../_assets/sounds/vent2.wav';
-import vent3 from '../../_assets/sounds/vent3.wav';
+// import vent1 from '../../_assets/sounds/vent1.wav';
+// import vent2 from '../../_assets/sounds/vent2.wav';
+// import vent3 from '../../_assets/sounds/vent3.wav';
 
 const useVent = () => {
 
-  const [playVent1] = useSound(vent1, {volume: 0.22, interrupt: false});
-  const [playVent2] = useSound(vent2, {volume: 0.22, interrupt: false});
-  const [playVent3] = useSound(vent3, {volume: 0.22, interrupt: false});
+  const [playVent1] = useSound('/assets/sounds/vent1.wav', {volume: 0.22, interrupt: false});
+  const [playVent2] = useSound('/assets/sounds/vent2.wav', {volume: 0.22, interrupt: false});
+  const [playVent3] = useSound('/assets/sounds/vent3.wav', {volume: 0.22, interrupt: false});
 
   const [ventState, setVentState] = useState(1)
 

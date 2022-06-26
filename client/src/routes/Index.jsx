@@ -5,7 +5,7 @@ import { Div } from '../_styles/_global'
 import NotFound from './NotFound';
 import Game from '../_components/Game';
 import useSound from 'use-sound';
-import bgSfx from '../_assets/sounds/amb.wav';
+// import bgSfx from '../_assets/sounds/amb.wav';
 
 const Index = () => {
   
@@ -23,7 +23,7 @@ const Page = () => {
   const { store } = useContext(GlobalContext)
   const { theme, playing, setPlaying } = store
 
-  const [playBg] = useSound(bgSfx, {volume: 0.09, interrupt: true, loop: true})
+  const [playBg] = useSound('/assets/sounds/amb.wav', {volume: 0.09, interrupt: true, loop: true})
 
   const playIt = () => {
     if (playing === false) {

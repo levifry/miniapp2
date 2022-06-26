@@ -2,11 +2,11 @@ import React, { useContext } from 'react'
 import useSound from 'use-sound';
 import { GlobalContext } from '../_context/AppProvider'
 import useLongPress from '../_helpers/useLongPress';
-import bombSfx from '../_assets/sounds/kill.wav';
-import flagSfx from '../_assets/sounds/hover.wav';
-import bomb from '../_assets/img/impostor.png'
-import flag from '../_assets/img/flag.png'
-import ventImg from '../_assets/img/vent.png'
+// import bombSfx from '../_assets/sounds/kill.wav';
+// import flagSfx from '../_assets/sounds/hover.wav';
+// import bomb from '../_assets/img/impostor.png'
+// import flag from '../_assets/img/flag.png'
+// import ventImg from '../_assets/img/vent.png'
 import { Img } from '../_styles/_global'
 
 export default function Cell({details, updateFlag, revealcell}) {
@@ -15,8 +15,8 @@ export default function Cell({details, updateFlag, revealcell}) {
   const { theme, vent } = store
 
   // Adding three sounds
-  const [playBomb] = useSound(bombSfx, {volume: 0.18, interrupt: false});
-  const [playFlag] = useSound(flagSfx, {volume: 0.3, interrupt: false});
+  const [playBomb] = useSound('/assets/sounds/kill.wav', {volume: 0.18, interrupt: false});
+  const [playFlag] = useSound('/assets/sounds/hover.wav', {volume: 0.3, interrupt: false});
 
   // Playing Sound on differents Clicks
   const click = () => {
@@ -64,17 +64,17 @@ export default function Cell({details, updateFlag, revealcell}) {
   return (
     <div {...longPress} className={`cell f-${details.flagged} v-${details.value} r-${details.revealed} ${theme} `} onContextMenu={rightclick}>
       {!details.revealed && details.flagged ? (
-        <Img mid alt='' src={flag}/>
+        <Img mid alt='' src='/assets/img/flag.png'/>
       ) : details.revealed && details.value !== 0 ? (
       details.value === "X" ? (
-        <Img mid alt='' src={bomb}/>
+        <Img mid alt='' src='/assets/img/impostor.png'/>
       ) : (
         details.value
       )
       ) : details.revealed && details.value === 0 ? (
         ''
       ) : (
-        <Img mid alt='' src={ventImg}/>
+        <Img mid alt='' src='/assets/img/vent.png'/>
       )}
     </div>
   )
