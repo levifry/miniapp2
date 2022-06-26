@@ -3,8 +3,8 @@ import styled from "styled-components";
 // Usage: <Div flex column fills center scrolly wrap></Div>
 export const Div = styled.div`
   display: ${(props) => props.flex ? "flex" : "block"};
-  height: ${(props) => props.fills ? "100vh" : "fit-content"};
-  width: ${(props) => props.fills ? "100vw" : "fit-content"};
+  height: ${(props) => props.fills ? "100%" : "fit-content"};
+  width: ${(props) => props.fills ? "100%" : "fit-content"};
   flex-direction: ${(props) => props.column ? "column" : props.row ? "row" : "row"};
   flex-wrap: ${(props) => props.wrap ? "wrap" : "nowrap"};
   justify-content: ${(props) => props.centerchildren ? "center" : props.center ? "center" : ""};
