@@ -12,7 +12,7 @@ const useLongPress = (
 
   const start = useCallback(
     event => {
-      if (event.button !== 2) {
+      if (event.button !== 2) { // rightclick handler
         if (shouldPreventDefault && event.target) {
             event.target.addEventListener("touchend", preventDefault, {
             passive: false
@@ -30,7 +30,7 @@ const useLongPress = (
 
   const clear = useCallback(
     (event, shouldTriggerClick = true) => {
-      if (event.button !== 2) {
+      if (event.button !== 2) { // rightclick handler
         timeout.current && clearTimeout(timeout.current);
         shouldTriggerClick && !longPressTriggered && onClick();
         setLongPressTriggered(false);
