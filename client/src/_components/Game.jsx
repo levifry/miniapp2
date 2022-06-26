@@ -1,24 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { createBoard, revealed } from '../_helpers/gameUtils'
 import Cell from './Cell';
 import { toast,ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import bgSfx from '../_assets/sounds/amb.wav';
-import useSound from 'use-sound';
 
 function Game() {
 
-  const [grid,setGrid] = useState([]);
-  const [nonMinecount,setNonMinecount]=useState(0);
-  const [mineLocation,setmineLocation]=useState([]);
-  const [playBg] = useSound(bgSfx, {volume: 0.08, interrupt: true, loop: true});
-  const [playing, setPlaying] = useState(false)
-  
-  
-  if (playing === false) {
-    playBg()
-    setPlaying(true)
-  }
+  const [grid, setGrid] = useState([])
+  const [nonMinecount, setNonMinecount] = useState(0)
+  const [mineLocation, setmineLocation] = useState([])
 
   const style={
     display : 'flex',
@@ -33,18 +23,20 @@ function Game() {
 
   // Making freshboard atstart
   const freshBoard = () => {
-    const newBoard = createBoard(10,10,20);
-    setNonMinecount(10*10-20);
+    const newBoard = createBoard(10, 10, 20);
+    setNonMinecount(10 * 10 - 20);
     setmineLocation(newBoard.mineLocation);
     setGrid(newBoard.board);
-    setPlaying(false)
   }
 
-  const updateFlag = (e, x, y) => {
-    e.preventDefault();
-    // deep copy of the object
-    let newGrid = JSON.parse(JSON.stringify(grid));
-    newGrid[x][y].flagged = true;
+  const updateFlag = (e, x, y, flagged) => {
+    // e.preventDefault();
+    let newGrid = JSON.parse(JSON.stringify(grid)) // deep copy of the object
+    if (flagged) {
+      newGrid[x][y].flagged = false;
+    } else {
+      newGrid[x][y].flagged = true;
+    }
     setGrid(newGrid);
   }
 
@@ -59,7 +51,7 @@ function Game() {
         newGrid[mineLocation[i][0]][mineLocation[i][1]].revealed=true;
       }
       setGrid(newGrid);
-      setTimeout(newfresh,2000);
+      setTimeout(newfresh, 2500);
     }
     if (nonMinecount === 0){
       toast.success('Congrats, you found all of the impostors!', { position: "top-center", autoClose: 1000, hideProgressBar: true, closeOnClick: true, pauseOnHover: true, draggable: true, progress: undefined, });
