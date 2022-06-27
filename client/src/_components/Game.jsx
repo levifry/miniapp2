@@ -68,7 +68,7 @@ function Game() {
     else{
       if (nonMinecount <= 1 && !finished){
         setFinished(true)
-        toast.success('Congrats, you found all of the impostors!', { position: "bottom-center", autoClose: 4000, hideProgressBar: true, closeOnClick: true, pauseOnHover: false, draggable: true, progress: undefined });
+        toast.success('Congrats! You found the impostors!', { position: "bottom-center", autoClose: 4000, hideProgressBar: true, closeOnClick: true, pauseOnHover: false, draggable: true, progress: undefined });
         playWin()
         setTimeout(newfresh, 6000);
       }
